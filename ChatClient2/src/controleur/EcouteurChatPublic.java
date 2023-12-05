@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static javax.swing.SwingUtilities.invokeAndWait;
+
 /**
  *
  * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
@@ -24,6 +26,19 @@ public class EcouteurChatPublic implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent evt) {
-        //à compléter
+        Object source = evt.getSource();
+
+
+        if (source instanceof JTextField) {
+
+          String s= ((JTextField) source).getText();
+
+            clientChat.envoyer("MSG "+s);
+
+
+            panneauChat.ajouter("MOI>>" + s);
+            panneauChat.viderChampSaisie();
+        }
+
     }
 }

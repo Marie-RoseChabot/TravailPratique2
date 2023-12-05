@@ -20,6 +20,7 @@ public class PanneauInvitations extends JPanel {
     public PanneauInvitations() {
         Font police = new Font("",Font.BOLD,15);
 
+
         invitationsRecues = new DefaultListModel<>();
         jlInvitationsRecues = new JList<>(invitationsRecues);
 

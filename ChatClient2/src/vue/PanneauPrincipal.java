@@ -32,7 +32,6 @@ public class PanneauPrincipal  extends JPanel {
 
         panneauChatPublic = new PanneauChat();
         panneauChatPublic.setBorder(BorderFactory.createTitledBorder("Salon de chat public"));
-
         EcouteurChatPublic ecouteurChatPublic = new EcouteurChatPublic(clientChat, panneauChatPublic);
         panneauChatPublic.setEcouteur(ecouteurChatPublic);
 
