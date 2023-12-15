@@ -1,5 +1,7 @@
 package vue;
 
+import controleur.EcouteInvitations;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;

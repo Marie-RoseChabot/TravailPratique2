@@ -3,9 +3,7 @@ package controleur;
 import com.chat.client.ClientChat;
 
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 /**
  *
@@ -13,7 +11,7 @@ import java.awt.event.MouseListener;
  * @version 1.0
  * @since 2023-11-01
  */
-public class EcouteurListeConnectes extends MouseAdapter {
+public class EcouteurListeConnectes extends MouseAdapter implements ActionListener {
 
     private ClientChat clientChat;
     public EcouteurListeConnectes(ClientChat clientChat) {
@@ -21,7 +19,22 @@ public class EcouteurListeConnectes extends MouseAdapter {
     }
 
     @Override
-    public void mouseClicked(MouseEvent evt) {
-        //à compléter
+    public void mouseClicked(MouseEvent evt)
+    {
+        // Verifie le double-clic
+        if(evt.getClickCount() == 2)
+        {
+            JList<String> listeConnectes = (JList<String>) evt.getSource();
+            String aliasSelectionne = (String) listeConnectes.getSelectedValue();
+
+            if(aliasSelectionne != null) {
+                clientChat.envoyer("JOIN " + aliasSelectionne);
+            }
+        }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

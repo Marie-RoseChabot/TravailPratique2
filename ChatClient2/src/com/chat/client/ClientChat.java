@@ -14,7 +14,6 @@ public class ClientChat extends Client {
     //Cette classe est pour le moment vide et sera compléter dans le TP.
     private EtatPartieEchecs etatPartieEchecs;
     private String alias;
-
     public EtatPartieEchecs getEtatPartieEchecs() {
         return etatPartieEchecs;
     }
