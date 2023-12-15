@@ -22,8 +22,16 @@ public class EcouteurChatPublic implements ActionListener {
         this.clientChat = clientChat;
         this.panneauChat = panneauChat;
     }
+
     @Override
-    public void actionPerformed(ActionEvent evt) {
-        //à compléter
+    public void actionPerformed(ActionEvent e) {
+        JTextField textField = (JTextField) e.getSource();
+        String msg = textField.getText();
+
+        panneauChat.ajouter("MOI >> " + msg);
+        clientChat.envoyer("MSG " + msg);
+
+        // Supprimer le texte d'un JTextField
+        textField.setText("");
     }
 }

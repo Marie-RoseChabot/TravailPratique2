@@ -1,6 +1,7 @@
 package vue;
 
 import com.chat.client.ClientChat;
+import controleur.EcouteInvitations;
 import controleur.EcouteurChatPrive;
 import controleur.EcouteurChatPublic;
 import controleur.EcouteurListeConnectes;
@@ -50,6 +51,10 @@ public class PanneauPrincipal  extends JPanel {
 
         //Enregistrement de l'écouteur de souris:
         jlConnectes.addMouseListener(new EcouteurListeConnectes(clientChat));
+
+        //Enregistrement de l'écouteur d'invitation chat priver:
+        EcouteInvitations ecouteurInvitations = new EcouteInvitations(clientChat,panneauInvitations);
+        panneauInvitations.setEcouteur(ecouteurInvitations);
 
         //Le bureau :
         bureau = new JDesktopPane();
@@ -114,7 +119,8 @@ public class PanneauPrincipal  extends JPanel {
     public void ajouterMessagePrive(String alias, String msg) {
         String message = alias+">>"+msg;
         System.out.println("PRIVÉ : "+alias+">>"+msg);
-        //à compléter
+        PanneauChatPrive pc = panneauxPrives.get(alias);
+        pc.ajouter(message);
     }
 
     public void inviteEchecs(String alias) {

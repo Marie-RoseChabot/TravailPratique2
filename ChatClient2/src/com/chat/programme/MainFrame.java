@@ -98,10 +98,22 @@ public class MainFrame extends JFrame implements Runnable, Observateur {
     public void seMettreAJour(Observable observable) {
         if (observable instanceof Client) {
             Client client = (Client)observable;
-            if (!client.isConnecte()) {
+            if (!client.isConnecte())
+            {
                 this.setTitle(TITRE);
                 this.panneauPrincipal.setVisible(false);
                 panneauPrincipal.vider();
+
+                //Activation de l'option connection
+                miConnecter.setEnabled(true);
+                //Desactivation de l'option deconnection
+                miDeconnecter.setEnabled(false);
+            }
+            else {
+                //Desactivation de l'option connection
+                miConnecter.setEnabled(false);
+                //Activation de l'option deconnection
+                miDeconnecter.setEnabled(true);
             }
         }
     }
