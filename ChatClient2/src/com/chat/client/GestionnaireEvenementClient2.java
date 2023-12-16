@@ -101,10 +101,12 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                 case "JOIN":
                     alias = evenement.getArgument();
                     panneauPrincipal.ajouterInvitationRecue(alias);
+
                     break;
                 case "JOINOK":
                     arg = evenement.getArgument();
                     panneauPrincipal.creerFenetreSalonPrive(arg);
+
                     System.out.println(arg + " Vous êtes en chat privé avec "+arg+" (PRV alias msg pour lui envoyer " +
                             "un message en privé)");
                     break;
@@ -114,8 +116,13 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     if (i == -1) //message vide. Ne devrait pas arriver.
                         break;
                     else {
+
                         alias = arg.substring(0, i);
+
+
                         String msg = arg.substring(i).trim();
+                        System.out.println(arg);
+
                         panneauPrincipal.ajouterMessagePrive(alias,msg);
                     }
                     break;
@@ -153,7 +160,10 @@ public class GestionnaireEvenementClient2 implements GestionnaireEvenement {
                     System.out.println(client.getEtatPartieEchecs());
                     PanneauEchiquier panneauEchiquier = new PanneauEchiquier(client.getEtatPartieEchecs());
                     //à compléter
-
+                    EcouteurJeuEchecs ecouteur=new EcouteurJeuEchecs(client);
+                    panneauEchiquier.setEcouteurJeuEchecs(ecouteur);
+                    fenetreEchecs=new FenetreEchecs(panneauEchiquier,"Vous ("+str+ ") contre "+arg);
+                    fenetreEchecs.setVisible(true);
                     panneauPrincipal.setFenetreEchecs(arg,fenetreEchecs);
                     break;
                 case "INVALID":

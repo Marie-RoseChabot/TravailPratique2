@@ -4,19 +4,14 @@ import com.chat.client.Client;
 import com.chat.client.ClientChat;
 import com.chat.client.GestionnaireEvenementClient2;
 import com.chat.commun.evenement.GestionnaireEvenement;
-import com.chat.commun.net.Connexion;
-import com.chat.echecs.EtatPartieEchecs;
-import controleur.EcouteurChatPublic;
 import controleur.EcouteurMenuPrincipal;
 import observer.Observable;
 import observer.Observateur;
-import vue.PanneauChat;
 import vue.PanneauEchiquier;
 import vue.PanneauPrincipal;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Vector;
 
 /**
  *
