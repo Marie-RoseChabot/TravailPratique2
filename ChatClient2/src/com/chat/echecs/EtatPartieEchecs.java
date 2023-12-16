@@ -1,12 +1,15 @@
 package com.chat.echecs;
 
+import observer.Observable;
+
+
 /**
  *
  * @author Abdelmoumène Toudeft (Abdelmoumene.Toudeft@etsmtl.ca)
  * @version 1.0
  * @since 2023-10-01
  */
-public class EtatPartieEchecs {
+public class EtatPartieEchecs extends Observable{
     private char[][] etatEchiquier = new char[8][8];
     public EtatPartieEchecs() {
         //Les pions :
@@ -45,13 +48,43 @@ public class EtatPartieEchecs {
         //Rois :
         etatEchiquier[0][4] = 'r';
         etatEchiquier[7][4] = 'R';
+
+
+
     }
     public boolean move(String deplacement) {
         boolean res = false;
-        //à compléter
 
+
+        int i1 = deplacement.charAt(0) - 'a';
+        int j1 = 8 - (deplacement.charAt(1) - '0');
+
+        int i2 = deplacement.charAt(deplacement.length() - 2) - 'a';
+        int j2 = 8 - (deplacement.charAt(deplacement.length() - 1) - '0');
+
+        char pieceDebut = etatEchiquier[j1][i1];
+
+        if (pieceDebut != ' ') {
+
+                if (etatEchiquier[j2][i2] == 'P' && i2 == 8) {
+                    etatEchiquier[j2][i2] = 'D';
+                }
+                if (etatEchiquier[j2][i2] == 'p' && i2 == 0) {
+                    etatEchiquier[j2][i2] = 'd';
+                }
+                else {
+                    etatEchiquier[j2][i2] = pieceDebut;
+                    etatEchiquier[j1][i1] = ' ';
+                }
+
+                this.setEtatEchiquier(etatEchiquier);
+
+                res = true;
+            }
         return res;
-    }
+        }
+
+
 
     @Override
     public String toString() {
@@ -74,5 +107,9 @@ public class EtatPartieEchecs {
 
     public void setEtatEchiquier(char[][] etatEchiquier) {
         this.etatEchiquier = etatEchiquier;
+
+        this.notifierObservateurs();
     }
+
+
 }

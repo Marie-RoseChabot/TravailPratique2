@@ -1,10 +1,6 @@
 package vue;
 
-import com.chat.echecs.EtatPartieEchecs;
-import controleur.EcouteurJeuEchecs;
-
 import javax.swing.*;
-import java.awt.*;
 
 public class FenetreEchecs extends JFrame {
 
